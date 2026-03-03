@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './NumberInput.css';
 
-function NumberInput({ integerOnly, onChange, defaultValue, label }) {
+function NumberInput({ integerOnly, onChange, defaultValue = 0, label, min, max }) {
 	const [hasDecimal, setHasDecimal] = useState(false);
+
+	const id = crypto.randomUUID();
 
 	function handleChange(e) {
 		const val = e.target.value;
@@ -47,6 +49,17 @@ function NumberInput({ integerOnly, onChange, defaultValue, label }) {
 			onChange(defaultValue);
 			return;
 		}
+
+		if (min && Number(val) < min) {
+			onChange(defaultValue);
+			return;
+		}
+
+		if (max && Number(val) > max) {
+			onChange(defaultValue);
+			return;
+		}
+
 		onChange(Number(val));
 	}
 
@@ -60,8 +73,12 @@ function NumberInput({ integerOnly, onChange, defaultValue, label }) {
 
 	return (
 		<>
-			{label ? <label className="number-input__label">{label}</label> : null}
-			<input className="number-input__field" type="text" value={displayValue} onChange={handleChange} />
+			{label ? (
+				<label htmlFor={id} className="number-input__label">
+					{label}
+				</label>
+			) : null}
+			<input id={id} className="number-input__field" type="text" value={displayValue} onChange={handleChange} />
 		</>
 	);
 }
