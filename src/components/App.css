@@ -10,22 +10,92 @@
 	flex-direction: column;
 }
 
-.breakeven-table {
+table {
 	margin: 0 auto;
-	/* border-collapse: separate; */
-	/* border-spacing: 27px 4px; */
+	font-size: 1.2rem;
 
-	& * {
-		text-align: left;
+	& td {
 		text-wrap: nowrap;
+	}
+
+	& th {
+		text-wrap: wrap;
+		max-width: 8rem;
 	}
 
 	& td,
 	& th {
+		text-align: left;
 		padding: 0.2rem 1rem;
+
+		&.first-col {
+			border-left: 5px double var(--color);
+		}
 	}
 
 	& tr:not(:last-of-type) td {
 		border-bottom: 1px solid #999;
+	}
+
+	& tr[data-disabled='true'] {
+		filter: brightness(0.8);
+		background-color: #222;
+	}
+
+	& td[data-expensive='true'] {
+		text-decoration: line-through;
+		filter: brightness(0.3);
+	}
+
+	& td[data-expensive='false'] {
+		background-color: #65f6733d;
+	}
+}
+
+/* let a table "overflow" the standard min width of body while staying centered */
+.table-container {
+	position: relative;
+	left: calc((100vw - 100%) / 2 * -1);
+	width: 99vw;
+}
+
+.span2 {
+	grid-column: span 2;
+}
+
+.gem-price-fields,
+.iron-price-form,
+.level-fields {
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	gap: 0.5rem 2rem;
+	align-items: center;
+
+	& label {
+		text-wrap: nowrap;
+		text-align: left;
+	}
+}
+
+.gem-price-fields {
+	margin-bottom: 1.5rem;
+}
+
+.using-artisan-checkbox {
+	justify-self: start;
+}
+.using-artisan-label {
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-right: 1rem;
+}
+
+.totals {
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.2rem;
+
+	& p {
+		border-bottom: 5px double var(--color, whitesmoke);
 	}
 }
