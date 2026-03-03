@@ -2,7 +2,7 @@ import { Material } from './constants.js';
 import TinkerLevelRange from './tinkerlevelrange.js';
 
 const tinkerData = [
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		75,
 		79.9,
 		2.083,
@@ -20,7 +20,7 @@ const tinkerData = [
 		30,
 		Material.CITRINE,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		80,
 		84.9,
 		1.786,
@@ -38,7 +38,7 @@ const tinkerData = [
 		45,
 		Material.TOURMALINE,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		85,
 		89.9,
 		1.562,
@@ -56,7 +56,7 @@ const tinkerData = [
 		60,
 		Material.AMBER,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		90,
 		94.9,
 		1.389,
@@ -74,7 +74,7 @@ const tinkerData = [
 		75,
 		Material.AMETHYST,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		95,
 		99.9,
 		1.25,
@@ -92,7 +92,7 @@ const tinkerData = [
 		90,
 		Material.RUBY,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		100,
 		104.9,
 		1.25,
@@ -110,7 +110,7 @@ const tinkerData = [
 		105,
 		Material.SAPPHIRE,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		105,
 		109.9,
 		1.25,
@@ -128,7 +128,7 @@ const tinkerData = [
 		120,
 		Material.EMERALD,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		110,
 		114.9,
 		1.25,
@@ -146,7 +146,7 @@ const tinkerData = [
 		135,
 		Material.STAR_SAPPHIRE,
 	),
-	TinkerLevelRange(
+	new TinkerLevelRange(
 		115,
 		119.9,
 		1.25,

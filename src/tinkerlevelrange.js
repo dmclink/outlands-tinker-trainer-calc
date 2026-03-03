@@ -208,8 +208,16 @@ export default class TinkerLevelRange {
 		return percentString(this.jewelExceptionalChance());
 	}
 
+	breakevenGemPriceString(ironPrice) {
+		return `${this.breakevenGemPrice(ironPrice)} gold`;
+	}
+
+	breakevenGemPriceWithArtisanString(ironPrice, artisanLevel) {
+		return `${this.breakevenGemPriceWithArtisan(ironPrice, artisanLevel)} gold`;
+	}
+
 	gemVendorPriceRatioString(ironPrice) {
-		return `${Math.round(this.gemVendorPrice(ironPrice) * 100)}%`;
+		return `${Math.round(this.gemVendorPriceRatio(ironPrice) * 100)}%`;
 	}
 	gemVendorPriceRatioWithArtisanString(ironPrice, artisanLevel) {
 		return `${Math.round(this.gemVendorPriceRatioWithArtisan(ironPrice, artisanLevel) * 100)}%`;
