@@ -52,11 +52,73 @@ table {
 	}
 }
 
+.breakeven-table {
+	& th,
+	& td {
+		@media (max-width: 650px) {
+			padding: 0.2rem 0.3rem;
+			font-size: 1rem;
+		}
+	}
+}
+
+.total-costs-table {
+	& th,
+	& td {
+		@media (max-width: 900px) {
+			font-size: 1rem;
+		}
+		@media (max-width: 800px) {
+			padding: 0.2rem 0.3rem;
+		}
+	}
+
+	& th:not(:first-of-type),
+	& td:not(:first-of-type) {
+		@media (max-width: 680px) {
+			text-wrap: wrap;
+		}
+	}
+
+	& th:first-of-type,
+	& td:first-of-type {
+		@media (max-width: 580px) {
+			text-wrap: wrap;
+		}
+	}
+
+	& .large-screen {
+		@media (max-width: 1000px) {
+			display: none;
+		}
+	}
+
+	& .small-screen {
+		@media (max-width: 650px) {
+			display: none;
+		}
+	}
+
+	& .only-small-screen {
+		display: none;
+
+		@media (max-width: 650px) {
+			display: table-cell;
+		}
+	}
+}
+
 /* let a table "overflow" the standard min width of body while staying centered */
 .table-container {
 	position: relative;
-	left: calc((100vw - 100%) / 2 * -1);
 	width: 99vw;
+
+	left: calc((100vw - 100%) / 2 * -1);
+	@media (max-width: 900px) {
+		width: 100%;
+		margin: 0 auto;
+		left: unset;
+	}
 }
 
 .span2 {
@@ -65,11 +127,19 @@ table {
 
 .gem-price-fields,
 .iron-price-form,
-.level-fields {
+.level-fields,
+fieldset {
 	display: grid;
 	grid-template-columns: min-content 1fr;
 	gap: 0.5rem 2rem;
 	align-items: center;
+
+	@media (max-width: 650px) {
+		grid-template-columns: min-content 200px;
+	}
+	@media (max-width: 550px) {
+		grid-template-columns: min-content 150px;
+	}
 
 	& label {
 		text-wrap: nowrap;

@@ -283,12 +283,14 @@ function App() {
 								<th>Tinker Skill</th>
 								<th>Craft Attempts</th>
 								{tinkerSkill > 0 && <th>Attempts Remaining</th>}
-								<th>Jewel</th>
-								<th>Iron Item</th>
-								<th>Jewel Net Cost</th>
-								<th>Iron Item Net Cost</th>
-								<th className="first-col">Jewel Pre-Sales Cost</th>
-								<th>Jewel Sales Revenue</th>
+								<th className="small-screen">Jewel</th>
+								<th className="small-screen">Iron Item</th>
+								<th className="only-small-screen">Item</th>
+								<th className="small-screen">Jewel Net Cost</th>
+								<th className="small-screen">Iron Item Net Cost</th>
+								<th className="only-small-screen">Cost</th>
+								<th className="first-col large-screen">Jewel Pre-Sales Cost</th>
+								<th className="large-screen">Jewel Sales Revenue</th>
 							</tr>
 						</thead>
 
@@ -300,12 +302,26 @@ function App() {
 										<td>{c.tinkerSkill}</td>
 										<td>{c.craftAttempts}</td>
 										{tinkerSkill > 0 && <td>{c.remaining}</td>}
-										<td data-expensive={c.ironIsCheaper}>{jewelString(c.gem)}</td>
-										<td data-expensive={!c.ironIsCheaper}>{c.ironItem}</td>
-										<td data-expensive={c.ironIsCheaper}>{numToGoldString(c.jewelNetCost)}</td>
-										<td data-expensive={!c.ironIsCheaper}>{numToGoldString(c.ironItemNetCost)}</td>
-										<td className="first-col">{numToGoldString(c.jewelPreSalesCost)}</td>
-										<td>{numToGoldString(c.jewelSalesRevenue)}</td>
+										<td className="small-screen" data-expensive={c.ironIsCheaper}>
+											{jewelString(c.gem)}
+										</td>
+										<td className="small-screen" data-expensive={!c.ironIsCheaper}>
+											{c.ironItem}
+										</td>
+										<td className="only-small-screen">
+											{c.ironIsCheaper ? c.ironItem : jewelString(c.gem)}
+										</td>
+										<td className="small-screen" data-expensive={c.ironIsCheaper}>
+											{c.jewelNetCost}
+										</td>
+										<td className="small-screen" data-expensive={!c.ironIsCheaper}>
+											{c.ironItemNetCost}
+										</td>
+										<td className="only-small-screen">
+											{c.ironIsCheaper ? c.ironItemNetCost : c.jewelNetCost}
+										</td>
+										<td className="first-col large-screen">{c.jewelPreSalesCost}</td>
+										<td className="large-screen">{c.jewelSalesRevenue}</td>
 									</tr>
 								);
 							})}
