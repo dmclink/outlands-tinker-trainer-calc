@@ -1,0 +1,8 @@
+.number-input__label {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+.number-input__field {
+	padding: 0.4rem 1rem;
+	font-size: 1.2rem;
+}
