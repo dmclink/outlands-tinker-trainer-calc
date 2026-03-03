@@ -26,16 +26,24 @@ function App() {
 			<section>
 				<h2>Break Even Prices</h2>
 				<table className="breakeven-table">
-					{tinkerData.map((range) => {
-						return (
-							<tr>
-								<td>{range.levelRangeString()}</td>
-								<td>{range.gemName}</td>
-								<td>{range.breakevenGemPriceString(ironPrice)}</td>
-								<td>{range.gemVendorPriceRatioString(ironPrice)}</td>
-							</tr>
-						);
-					})}
+					<thead>
+						<th>Tinker Level</th>
+						<th>Gem</th>
+						<th>Break-Even Price</th>
+						<th>% of Vendor Price</th>
+					</thead>
+					<tbody>
+						{tinkerData.map((range) => {
+							return (
+								<tr>
+									<td>{range.levelRangeString()}</td>
+									<td>{range.gemName}</td>
+									<td>{range.breakevenGemPriceString(ironPrice)}</td>
+									<td>{range.gemVendorPriceRatioString(ironPrice)}</td>
+								</tr>
+							);
+						})}
+					</tbody>
 				</table>
 				<p>
 					Buying gems at market at any price below makes crafting with gems worth it. If gem market prices are

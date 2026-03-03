@@ -20,7 +20,8 @@
 		text-wrap: nowrap;
 	}
 
-	& td {
+	& td,
+	& th {
 		padding: 0.2rem 1rem;
 	}
 
