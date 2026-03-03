@@ -61,7 +61,7 @@ export default class TinkerLevelRange {
 		return jewelFailPrice + jewelExceptionalPrice + jewelNonExceptionalPrice;
 	}
 
-	artisanJewelItemCost(ironPrice, jewelPrice, artisanLevel) {
+	jewelItemCostWithArtisan(ironPrice, jewelPrice, artisanLevel) {
 		const materialCost = ironPrice + jewelPrice;
 
 		const jewelFailPrice = this.jewelFailChance() * materialCost;
@@ -80,7 +80,7 @@ export default class TinkerLevelRange {
 	// since single item costs are net after recycle/selling, these are also net costs for the entire level gain range
 	expectedCraftAttempts() {
 		const skillPoints = 50; // 5.0 skill points at 0.1 gain each
-		return skillPoints / this.levelChance();
+		return Math.round(skillPoints / this.levelChance);
 	}
 
 	expectedIronItemCost(ironPrice) {
@@ -91,8 +91,12 @@ export default class TinkerLevelRange {
 		return this.expectedCraftAttempts() * this.jewelItemCost(ironPrice, jewelPrice);
 	}
 
-	expectedArtisanJewelItemCost(ironPrice, jewelPrice, artisanLevel) {
-		return this.expectedCraftAttempts() * this.artisanJewelItemCost(ironPrice, jewelPrice, artisanLevel);
+	expectedJewelItemCostWithArtisan(ironPrice, jewelPrice, artisanLevel) {
+		return this.expectedCraftAttempts() * this.jewelItemCostWithArtisan(ironPrice, jewelPrice, artisanLevel);
+	}
+
+	expectedJewelPresalesCost(ironPrice, jewelPrice) {
+		return this.expectedCraftAttempts() * (ironPrice + jewelPrice);
 	}
 
 	// BREAKEVEN GEM PRICE
@@ -189,7 +193,7 @@ export default class TinkerLevelRange {
 
 	// STRINGS
 	levelRangeString() {
-		return `${this.startLevel} - ${this.endLevel}`;
+		return `${this.startLevel} - ${this.endLevel + 0.1}`;
 	}
 
 	levelChanceString() {
