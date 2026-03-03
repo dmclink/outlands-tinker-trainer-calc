@@ -211,6 +211,10 @@ function App() {
 
 					<tbody>
 						{tinkerData.map((range) => {
+							if (range.startLevel < 75) {
+								return null;
+							}
+
 							const key = crypto.randomUUID();
 							return (
 								<tr key={key}>
