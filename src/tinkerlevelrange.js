@@ -21,7 +21,7 @@ export default class TinkerLevelRange {
 		ironItemName,
 		jewelName,
 		jewelValue,
-		exceptionalJewelValue,
+		jewelExceptionalValue,
 		gemName,
 	) {
 		this.startLevel = startLevel;
@@ -38,7 +38,7 @@ export default class TinkerLevelRange {
 		this.ironItemName = ironItemName;
 		this.jewelName = jewelName;
 		this.jewelValue = jewelValue;
-		this.exceptionalJewelValue = exceptionalJewelValue;
+		this.jewelExceptionalValue = jewelExceptionalValue;
 		this.gemName = gemName;
 	}
 
@@ -126,13 +126,13 @@ export default class TinkerLevelRange {
 	}
 
 	gemVendorPriceRatio(ironPrice) {
-		const breakevenPrice = this.breakevenGemPrice();
+		const breakevenPrice = this.breakevenGemPrice(ironPrice);
 		const gemVendorPrice = GemVendorPrice[this.gemName];
 		return breakevenPrice / gemVendorPrice;
 	}
 
 	gemVendorPriceRatioWithArtisan(ironPrice, artisanLevel) {
-		const breakevenPrice = this.breakevenGemPriceWithArtisan(artisanLevel);
+		const breakevenPrice = this.breakevenGemPriceWithArtisan(ironPrice, artisanLevel);
 		const gemVendorPrice = GemVendorPrice[this.gemName];
 		return breakevenPrice / gemVendorPrice;
 	}
